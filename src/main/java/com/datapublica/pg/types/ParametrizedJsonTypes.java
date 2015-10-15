@@ -52,7 +52,7 @@ public class ParametrizedJsonTypes {
         public void setParameterValues(Properties parameters) {
             Class<?> clazz = ParametrizedJsonTypes.getClassParameter("type", parameters, "java.lang.", Object.class);
             Class<? extends Collection> containerClass = ParametrizedJsonTypes.getClassParameter("container", parameters, "java.util.", Collection.class);
-            boolean binary = "false".equals(parameters.get("binary"));
+            boolean binary = !"false".equals(parameters.get("binary"));
             init(MAPPER.getTypeFactory().constructCollectionType(containerClass, clazz), binary);
         }
     }
@@ -79,7 +79,7 @@ public class ParametrizedJsonTypes {
 
         public void setParameterValues(Properties parameters) {
             Class<?> clazz = ParametrizedJsonTypes.getClassParameter("type", parameters, "java.lang.", Object.class);
-            boolean binary = "false".equals(parameters.get("binary"));
+            boolean binary = !"false".equals(parameters.get("binary"));
             init(SimpleType.construct(clazz), binary);
         }
     }
@@ -91,7 +91,7 @@ public class ParametrizedJsonTypes {
         public void setParameterValues(Properties parameters) {
             Class<?> keyClass = ParametrizedJsonTypes.getClassParameter("key", parameters, "java.lang.", Object.class);
             Class<?> valueClass = ParametrizedJsonTypes.getClassParameter("value", parameters, "java.lang.", Object.class);
-            boolean binary = "false".equals(parameters.get("binary"));
+            boolean binary = !"false".equals(parameters.get("binary"));
             init(MAPPER.getTypeFactory().constructMapType(HashMap.class, keyClass, valueClass), binary);
         }
     }
