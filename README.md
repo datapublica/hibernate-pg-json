@@ -99,3 +99,16 @@ You can either use the ```JsonType(JavaType, boolean)``` constructor or the meth
 # Mapper customization
 The jackson Object Mapper is (currently) defined as static final in ```com.datapublica.pg.types.JsonType``` (field ```MAPPER```).
 If you want more customization on this (say for date serialization for instant), feel free to add options.
+
+# Debug helper
+* ```Unknown SQL type code 1999``` or ```2000```
+
+You forgot to include the dialect (database-platform) in your configuration.
+
+* ```Unknown type Json```
+
+You forgot to import types (packages to scan) in your configuration.
+
+* ```Class not found PostgreSQL94Dialect```
+
+You are using Hibernate 4.x and therefore cannot use ```PostgreSQL94JsonDialect``` in your code, just use ```PostgreSQLJsonDialect```.
