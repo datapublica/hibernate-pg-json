@@ -22,6 +22,9 @@ public class ParametrizedJsonTypes {
     private static <E> Class<? extends E> getClassParameter(String parameter, Properties parameters, String defaultPrefix, Class<E> mustExtend) {
         Class<?> clazz;
         String type = (String) parameters.get(parameter);
+        if (type == null) {
+            throw new IllegalArgumentException("You forgot to put a @Parameter with name="+parameter+" for this json type");
+        }
         try {
             clazz = Class.forName(type);
             if (!mustExtend.isAssignableFrom(clazz)) {
