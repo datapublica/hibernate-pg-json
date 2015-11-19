@@ -86,9 +86,9 @@ public class JsonType implements UserType {
     }
 
     public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner) throws HibernateException, SQLException {
+        final Object result = rs.getObject(names[0]);
         if (!rs.wasNull()) {
             String content;
-            final Object result = rs.getObject(names[0]);
 
             if (result instanceof String) {
                 content = (String) result;
