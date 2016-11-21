@@ -5,14 +5,14 @@
 
     <groupId>com.datapublica.pg</groupId>
     <artifactId>hibernate-json</artifactId>
-    <version>0.2</version>
+    <version>0.3</version>
     <packaging>jar</packaging>
     <name>Hibernate PG JSON Mapping</name>
 
     <url>http://maven.apache.org</url>
 
     <properties>
-        <hibernate.version>5.0.2.Final</hibernate.version>
+        <hibernate.version>5.2.4.Final</hibernate.version>
         <jackson.version>2.4.4</jackson.version>
         <postgresql.version>9.4-1203-jdbc42</postgresql.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

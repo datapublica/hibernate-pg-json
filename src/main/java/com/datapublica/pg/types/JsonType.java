@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.type.SimpleType;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
 import org.postgresql.util.PGobject;
 
@@ -68,6 +69,14 @@ public class JsonType implements UserType {
 
     public int hashCode(Object x) throws HibernateException {
         return null == x ? 0 : x.hashCode();
+    }
+
+    public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
+        return nullSafeGet(rs, names, (SessionImplementor) session, owner);
+    }
+
+    public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
+        nullSafeSet(st, value, index, (SessionImplementor) session);
     }
 
     public boolean isMutable() {
