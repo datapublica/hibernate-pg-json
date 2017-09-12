@@ -16,7 +16,9 @@ import java.util.Properties;
         @TypeDef(typeClass = ParametrizedJsonTypes.JsonList.class, name = "JsonList"),
         @TypeDef(typeClass = ParametrizedJsonTypes.JsonSet.class, name = "JsonSet"),
         @TypeDef(typeClass = ParametrizedJsonTypes.Json.class, name = "Json"),
-        @TypeDef(typeClass = ParametrizedJsonTypes.JsonMap.class, name = "JsonMap")
+        @TypeDef(typeClass = ParametrizedJsonTypes.JsonMap.class, name = "JsonMap"),
+        @TypeDef(typeClass = ParametrizedJsonTypes.RawJson.class, name = "RawJson"),
+        @TypeDef(typeClass = ParametrizedJsonTypes.RawJsonb.class, name = "RawJsonb")
 })
 public class ParametrizedJsonTypes {
     private static <E> Class<? extends E> getClassParameter(String parameter, Properties parameters, String defaultPrefix, Class<E> mustExtend) {
@@ -46,6 +48,18 @@ public class ParametrizedJsonTypes {
             }
         }
         return (Class<? extends E>) clazz;
+    }
+
+    public static class RawJson extends RawJsonType {
+        public RawJson() {
+            super(false);
+        }
+    }
+
+    public static class RawJsonb extends RawJsonType {
+        public RawJsonb() {
+            super(true);
+        }
     }
 
     public static class JsonCollection extends JsonType implements ParameterizedType {

@@ -100,6 +100,17 @@ You can either use the ```JsonType(JavaType, boolean)``` constructor or the meth
 The jackson Object Mapper is (currently) defined as static final in ```com.datapublica.pg.types.JsonType``` (field ```MAPPER```).
 If you want more customization on this (say for date serialization for instant), feel free to add options.
 
+# Raw Types
+If you want to store a blob of json without mappers you can use the types `RawJson` and `RawJsonb`. The field will need
+to be in String type.
+
+```java
+@Type(type = "RawJsonb")
+private String payload;
+```
+
+In this example, `payload` will be stored as a jsonb column and can be queried as such.
+
 # Debug helper
 * ```Unknown SQL type code 1999``` or ```2000```
 
