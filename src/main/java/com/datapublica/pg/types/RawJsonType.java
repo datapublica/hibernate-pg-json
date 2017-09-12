@@ -92,6 +92,7 @@ public class RawJsonType implements UserType {
     }
 
     public Object deepCopy(Object value) throws HibernateException {
+        if (value == null) return null;
         return deserialize(serialize(value));
     }
 
